@@ -1,0 +1,2 @@
+# DetectoresMetales
+Proyecto Django experimento
