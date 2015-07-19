@@ -5,17 +5,18 @@ from django.utils.translation import ugettext_lazy as _
 
 @python_2_unicode_compatible
 class Expedientes(models.Model):
-    ID_Expediente = models.AutoField(verbose_name='ID_Expediente', serialize=False, auto_created=True, primary_key=True)
-    expediente = models.TextField(_('Expediente'), blank=True, null=True) # unique
+    ID_expediente = models.AutoField(verbose_name='ID_Expediente', serialize=False, auto_created=True, primary_key=True)
+    expediente = models.TextField(_('Expediente'), max_length=50, blank=True, null=True) # unique
     fecha_solicitud = models.DateTimeField(_('Fecha de Solicitud'))
 
     class Meta:
 #        abstract = True
         verbose_name = _('Expediente')
         verbose_name_plural = _('Expedientes')
+        ordering = ['ID_expediente']
 
     def __str__(self):
-        return self.title
+        return self.expediente
 
 '''
 python manage inspectdb ----------------------- (ya vere como)

@@ -29,3 +29,8 @@ python manage.py startapp BBDD
 
 # colocado ficheros de tema bootstrap
 # creado estructura vacía para la app BBDD... templates, static, model de Expedientes, formulario
+
+
+
+# Modificado el modelo Expedientes
+# Añadido el manager por defecto de este modelo al admin site, editando BBDD/admin.py

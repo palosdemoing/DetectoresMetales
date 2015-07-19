@@ -15,6 +15,6 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns('DetectoresMetales.BBDD.views',
     url(r'^$', 'expedientes_list', name='expedientes_list'),
-    url(r'^BBDD/add/$', 'expedientes_add', name='expedientes_add'),
-    url(r'^BBDD/edit/(?P<expedientes_item_pk>\d+)/$', 'expedientes_edit', name='expedientes_edit'),
+    url(r'^BBDD/$', 'expedientes_add', name='expedientes_add'),
+    url(r'^BBDD/(?P<expedientes_item_pk>\d+)/$', 'expedientes_edit', name='expedientes_edit'),
 )
