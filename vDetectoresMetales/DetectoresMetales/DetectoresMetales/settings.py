@@ -11,19 +11,19 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 """
-Archivo de configuración. Por defecto, Django te recomienda que configures 
-unos pocos de parámetros (debug, aplicaciones, middleware, base de 
+Archivo de configuracion. Por defecto, Django te recomienda que configures 
+unos pocos de parametros (debug, aplicaciones, middleware, base de 
 datos, ...), pero puede contener otras muchas configuraciones. Todas 
-las que aquí aparecen: global_settings (todas documentadas) y por supuesto 
-puedes crear las que necesites. El único requisito es que tienen que ser 
-variables en mayúsculas.
+las que aqui aparecen: global_settings (todas documentadas) y por supuesto 
+puedes crear las que necesites. El unico requisito es que tienen que ser 
+variables en mayusculas.
 
 Siempre se debe de importar usando lo siguiente:
 
  from django.conf import settings (hecho)
 
 Nunca debemos importarlo usando algo como lo siguiente, ya que de esta 
-manera solo obtendríamos las configuraciones sobrescritas, pero no las 
+manera solo obtendriamos las configuraciones sobrescritas, pero no las 
 no sobrescritas.
 
  from MI_PROYECTO import settings
@@ -61,8 +61,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-#    'django.bootstrap3',          # si instalo    pip install django-bootstrap3
-#    'DetectoresMetales.laQueSea', # cuando las cree
+    'bootstrap3',          # requiere ->    pip install django-bootstrap3
+    'DetectoresMetales.BBDD',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,7 +84,7 @@ TEMPLATES = [  # nueva en 1.8
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # otros motores de plantillas -> jinja2
         'DIRS': [os.path.join(BASE_DIR, 'DetectoresMetales', 'templates')], 
-        # lo ha creado
+        # lo he creado
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,6 +136,6 @@ USE_TZ = True    # timezone
 
 STATIC_URL = '/static/'
     # referencia lugares donde debe buscar
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'DetectoresMetales', 'static')  
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'DetectoresMetales', 'static') ]
     # la crea tras consultar en
     #   proyecto GitHub -> django/django/conf/global_settings.py
