@@ -8,7 +8,7 @@
         <div class="col-lg-4 col-md-6">
             <h2>
                 {{ expedientes_item.title }}
-                <a href="{% url "expedientes_edit" expedientes_item_item.pk %}"><small>({% trans "Editar Expediente" %})</small></a>
+                <a href="{% url "expedientes_edit" expedientes_item.pk %}"><small>({% trans "Editar Expediente" %})</small></a>
             </h2>
             {{ expedientes_item.description|safe|truncatewords_html:25 }}
         </div>

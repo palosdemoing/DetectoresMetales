@@ -35,30 +35,31 @@ def expedientes_list(request):
 
 
 def expedientes_add(request):
-    #~ data = None
-    #~ if request.method == 'POST':
-        #~ data = request.POST
-    #~ initial = {'fecha_solicitud': datetime.now()}
-    #~ news_form = NewsForm(data=data,
-                         #~ initial=initial)
-    #~ if news_form.is_valid():
-        #~ news_form.save()
-        #~ return HttpResponseRedirect(reverse('expedientes_list'))
+    data = None
+    if request.method == 'POST':
+        data = request.POST
+    initial = {'fecha_solicitud': datetime.now()}
+        # establece valor inicial a este campo
+    expedientes_form = ExpedientesForm(data=data,
+                         initial=initial)
+    if expedientes_form.is_valid():
+        expedientes_form.save()
+        return HttpResponseRedirect(reverse('expedientes_list'))
     return render_to_response('expedientes/expedientes_list.html',
                               {'expedientes_form': expedientes_form},
                               context_instance=RequestContext(request))
 
 
-def expedientes_edit(request, expedientes_item_pk):
-    #~ data = None
-    #~ if request.method == 'POST':
-        #~ data = request.POST
-    #~ news_item = News.objects.get(pk=newsitem_pk)
-    #~ news_form = NewsForm(data=data,
-                         #~ instance=news_item)
-    #~ if news_form.is_valid():
-        #~ news_form.save()
-        #~ return HttpResponseRedirect(reverse('news_list'))
+def expedientes_edit(request, expedienteitem_pk):
+    data = None
+    if request.method == 'POST':
+        data = request.POST
+    expedientes_item = Expedientes.objects.get(pk=expedienteitem_pk)
+    expedientes_form = ExpedientesForm(data=data,
+                         instance=expedientes_item)
+    if expedientes_form.is_valid():
+        expedientes_form.save()
+        return HttpResponseRedirect(reverse('expedientes_list'))
     return render_to_response('expedientes/expedientes_edit.html',
                               {'expedientes_form': expedientes_form},
                               context_instance=RequestContext(request))
