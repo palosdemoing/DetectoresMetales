@@ -45,7 +45,7 @@ def expedientes_add(request):
     if expedientes_form.is_valid():
         expedientes_form.save()
         return HttpResponseRedirect(reverse('expedientes_list'))
-    return render_to_response('expedientes/expedientes_list.html',
+    return render_to_response('expedientes/expedientes_add.html',
                               {'expedientes_form': expedientes_form},
                               context_instance=RequestContext(request))
 
@@ -54,9 +54,9 @@ def expedientes_edit(request, expedienteitem_pk):
     data = None
     if request.method == 'POST':
         data = request.POST
-    expedientes_item = Expedientes.objects.get(pk=expedienteitem_pk)
+    expediente_item = Expedientes.objects.get(pk=expedienteitem_pk)
     expedientes_form = ExpedientesForm(data=data,
-                         instance=expedientes_item)
+                         instance=expediente_item)
     if expedientes_form.is_valid():
         expedientes_form.save()
         return HttpResponseRedirect(reverse('expedientes_list'))

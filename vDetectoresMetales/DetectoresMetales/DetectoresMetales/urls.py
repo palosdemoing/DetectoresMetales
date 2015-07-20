@@ -45,5 +45,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    #    Aqui podria cambiarle la forma de entrar!!!!!!!!!!!!!!!!!
     url(r'', include('DetectoresMetales.BBDD.urls')),
 ]
