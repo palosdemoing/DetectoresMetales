@@ -1,4 +1,5 @@
 {% load i18n %}
+<!-- innecesario porque no voy a traducir -->
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -13,9 +14,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Inicio</a></li>
+            <li class="active"><a href="{% url "expedientes_list" %}">Inicio </a> </li>
             <li><a href="#about">Ayuda</a></li>
             <li><a href="#contact">Contacto</a></li>
+            
+            <!-- templatetag trans eliminarla -->
+            <!-- BLOG_URL es la variable provista por el context processor de ejemplo -->
+            <li><a href="{{ BLOG_URL }}">{% trans "Blog" %}</a></li>
             <li class="dropdown">
               <a href="{% url "expedientes_list" %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Expedientes"%} <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -23,6 +28,14 @@
                 <li><a href="{% url "expedientes_add" %}">{% trans "Añadir expediente" %}</a></li>
               </ul>
             </li>
+             <!-- ejemplo para cambio de idioma, lo usare para acceso a playas, solicitantes...
+            <li class="dropdown">
+              <a href="{% url "playas_list" %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Playas <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                    <li><a href="{% url "playas_list" %}"> Playas </a></li>
+                    <li><a href="{% url "playas_add" %}"> Añadir Playa </a></li>
+              </ul>
+            </li>     -->
           </ul>
         </div><!--/.nav-collapse -->
     </div>

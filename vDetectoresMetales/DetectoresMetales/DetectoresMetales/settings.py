@@ -74,6 +74,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'DetectoresMetales.middleware.No404Middleware',
+#    'DetectoresMetales.middleware.nombreClase',
+#    en ruta proyecto/middleware.py, en este caso porque aplicable a todo el proyecto
 )
 
 ROOT_URLCONF = 'DetectoresMetales.urls'  
@@ -92,6 +95,10 @@ TEMPLATES = [  # nueva en 1.8
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'DetectoresMetales.context_processors.blog',
+#               'DetectoresMetales.context_processors.nombreFunc',
+#                en ruta proyecto/context_processors.py, en este caso porque aplicable a todo el proyecto
+#                función llamada con templatetags
             ],
         },
     },
@@ -137,5 +144,14 @@ USE_TZ = True    # timezone
 STATIC_URL = '/static/'
     # referencia lugares donde debe buscar
 STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'DetectoresMetales', 'static') ]
-    # la crea tras consultar en
+    # la sobreescribe tras consultar existencia en
     #   proyecto GitHub -> django/django/conf/global_settings.py
+
+
+# ESPECIFICAS
+
+# usada por la paginacion en expedientes_list.html
+PAGINATION_PAGES = 6
+
+# usada por el context_processor.py y desde la plantilla inc.menu.html
+BLOG_URL = 'http://blog.example.com/foo'

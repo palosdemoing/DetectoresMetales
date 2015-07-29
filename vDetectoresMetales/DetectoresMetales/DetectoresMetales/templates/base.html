@@ -36,6 +36,9 @@
   <body role="document">
 
     <!-- Fixed navbar -->
+    
+    <!-- forma de extraer un bloque div completo -->
+    
     {% block menu %}
         {% include "inc.menu.html" %}
     {% endblock %}
@@ -607,7 +610,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     {% block js %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    Recomendable, ante imposibilidad de acceso a Internet, tenerlo en los estaticos
+    Existe la forma de intentar cogerlo de GoogleAPIs actualizado, antes de cargar el propio -->
+    <script src="{% static "GoogleAPI-jquery.min.js" %}"></script>
     <script src="{% static "bootstrap3.3.5/dist/js/bootstrap.min.js" %}"></script>
     <script src="{% static "bootstrap3.3.5/assets/js/docs.min.js" %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

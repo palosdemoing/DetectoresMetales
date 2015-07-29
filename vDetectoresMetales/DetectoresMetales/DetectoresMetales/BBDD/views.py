@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -9,8 +10,8 @@ from django.template import RequestContext
 from DetectoresMetales.BBDD.forms import ExpedientesForm
 from DetectoresMetales.BBDD.models import Expedientes
 
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-#from DetectoresMetales import settings
+#from DetectoresMetales import settings    MAL
+#from django.conf import settings          BIEN   pilla el mio igual
 
 
 
@@ -18,13 +19,17 @@ def expedientes_list(request):
     expedientes_filtered = Expedientes.objects.filter(
         fecha_solicitud__lte=datetime.now()).order_by('fecha_solicitud')
     paginator = Paginator(expedientes_filtered, 3) #settings.PAGINATION_PAGES) # variable en settings.py
+    page_default = 1
 
-    page = request.GET.get('page')
+    page = request.GET.get('page', page_default)
+        # por defecto daría 1, porque .get() solo devuelve 1 objeto, el segundo es default
+        # así ya no entraría al -> except EmptyPage
+        # resulta más limpio que dejarlo pasar por las excepciones
     try:
         expedientes = paginator.page(page)
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
-        expedientes = paginator.page(1)
+        expedientes = paginator.page(page_default)
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         expedientes = paginator.page(paginator.num_pages)
