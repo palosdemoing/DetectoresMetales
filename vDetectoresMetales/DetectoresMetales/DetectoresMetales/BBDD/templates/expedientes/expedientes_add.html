@@ -18,7 +18,52 @@
             </form>
         </div>
         <div class="col-lg-6">
-            TEXTO DE AYUDA......
+            <form action="{% url "expedientes_delete" expedientes_form.instance.pk %}" method="post">
+                {% csrf_token %}
+                <button id="deleteExpedienteAction" type="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                    {% trans "Eliminar Expediente" %}
+                </button>
+            </form>
+            
+            
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{% trans "¿Seguro que quiere eliminar este expediente/solicitud?" %}</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Cerrar" %}</button>
+                    <button id="deleteExpedienteSubmit" type="button" class="btn btn-primary">{% trans "Eliminar" %}</button>
+                </div>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
+{% endblock %}
+
+
+
+<!-- Botón para eliminar registro --> 
+
+{% block js %}
+    {{ block.super }}
+    <script type="text/javascript">
+        (function($){
+            $(document).ready(function () {
+                $("#deleteExpedientesAction").attr("type", "button");
+                $("#deleteExpedientesSubmit").click(function() {
+                    $.ajax("{% url "expedientes_delete" expedientes_form.instance.pk %}",
+                           {method: 'post',
+                            data: {csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()},
+                            success: function () {
+                                    window.location.href = "{% url "expedientes_list" %}";
+                            }});
+                });
+            });
+        })(jQuery);
+    </script>
 {% endblock %}

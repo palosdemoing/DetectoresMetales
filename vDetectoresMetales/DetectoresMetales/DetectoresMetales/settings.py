@@ -95,10 +95,10 @@ TEMPLATES = [  # nueva en 1.8
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'DetectoresMetales.context_processors.blog',
+                'DetectoresMetales.context_processors.intranet',
 #               'DetectoresMetales.context_processors.nombreFunc',
 #                en ruta proyecto/context_processors.py, en este caso porque aplicable a todo el proyecto
-#                función llamada con templatetags
+#                funcion llamada con templatetags
             ],
         },
     },
@@ -154,4 +154,4 @@ STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'DetectoresMetales', 'static') ]
 PAGINATION_PAGES = 6
 
 # usada por el context_processor.py y desde la plantilla inc.menu.html
-BLOG_URL = 'http://blog.example.com/foo'
+INTRANET_URL = 'http://intranet-dpca.dca.ccul.junta-andalucia.es'

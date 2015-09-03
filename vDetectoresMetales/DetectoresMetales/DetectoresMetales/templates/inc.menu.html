@@ -19,8 +19,8 @@
             <li><a href="#contact">Contacto</a></li>
             
             <!-- templatetag trans eliminarla -->
-            <!-- BLOG_URL es la variable provista por el context processor de ejemplo -->
-            <li><a href="{{ BLOG_URL }}">{% trans "Blog" %}</a></li>
+            <!-- INTRANET_URL es la variable provista por el context processor de ejemplo -->
+            <li><a href="{{ INTRANET_URL }}">{% trans "Blog" %}</a></li>
             <li class="dropdown">
               <a href="{% url "expedientes_list" %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Expedientes"%} <span class="caret"></span></a>
               <ul class="dropdown-menu">

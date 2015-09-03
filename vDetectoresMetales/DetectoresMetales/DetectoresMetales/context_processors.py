@@ -4,5 +4,5 @@
 from django.conf import settings
 
 # se queda de momento
-def blog(request):
-    return {'BLOG_URL': settings.BLOG_URL}
+def intranet(request):
+    return {'INTRANET_URL': settings.BLOG_URL}
